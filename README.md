@@ -6,20 +6,20 @@ ___________________________________________________________________________
 
 ## Sample code on where error is thrown
 
-/*
-public function showRegistrationForm()
-    {
+      /**
+        public function showRegistrationForm()
+            {
         $data = User::with('department')->get();
         return view('auth.register',['data'=>$data]);
-    
-   }
+        }
+   */
 
 
 ## The user Model relationship
 
-/**
- class User extends Authenticatable
-{
+   /**
+   class User extends Authenticatable
+   {
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -49,9 +49,9 @@ public function showRegistrationForm()
     
  ## sample relationship on department model
 
-/**
-class department extends Model
-{
+    /**
+     class department extends Model
+     {
     use HasFactory;
 
     public function User()

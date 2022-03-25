@@ -1,11 +1,12 @@
 -----------------------------------------------------------------------------------------------------------------------------------------
-  ### Error
+ ---Error
 Call to undefined relationship [department] on model [App\Models\User].
 ___________________________________________________________________________
   
 
 ## Sample code on where error is thrown
 
+/*
 public function showRegistrationForm()
     {
         $data = User::with('department')->get();
@@ -13,9 +14,10 @@ public function showRegistrationForm()
     
    }
 
- ## The user Model relationship
-'''
 
+## The user Model relationship
+
+/**
  class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -41,11 +43,13 @@ public function showRegistrationForm()
         'email',
         'password',
     ];
-    '''
+    
+    
+    */
     
  ## sample relationship on department model
 
-
+/**
 class department extends Model
 {
     use HasFactory;
@@ -57,7 +61,7 @@ class department extends Model
 
     protected $table = 'departments';
     protected $fillable = ['dpname'];
-     
-   
-}
+    }
+    
+    */
 

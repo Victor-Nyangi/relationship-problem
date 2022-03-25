@@ -4,7 +4,7 @@ Call to undefined relationship [department] on model [App\Models\User].
 ___________________________________________________________________________
   
 
-## Sample code on where error is thrown
+## Sample code on where error is thrown in RegisterUsers.php extension of RegisterController
 
       /**
         public function showRegistrationForm()
@@ -12,15 +12,15 @@ ___________________________________________________________________________
         $data = User::with('department')->get();
         return view('auth.register',['data'=>$data]);
         }
-   */
+       */
 
 
 ## The user Model relationship
 
-   /**
-   class User extends Authenticatable
-   {
-    use HasApiTokens, HasFactory, Notifiable;
+     /**
+     class User extends Authenticatable
+     {
+     use HasApiTokens, HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -43,9 +43,8 @@ ___________________________________________________________________________
         'email',
         'password',
     ];
-    
-    
-    */
+    }
+   */
     
  ## sample relationship on department model
 

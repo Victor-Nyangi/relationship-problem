@@ -4,7 +4,8 @@ Call to undefined relationship [department] on model [App\Models\User].
 ___________________________________________________________________________
   
 
-##The sample code thats throwing error
+##The error is thrown here
+___________________________________________________________________________
 
 
  public function showRegistrationForm()

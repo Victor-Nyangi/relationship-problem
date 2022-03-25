@@ -53,7 +53,7 @@ ___________________________________________________________________________
      {
     use HasFactory;
 
-    public function User()
+    public function users()
     {
         return $this->hasMany(User::class);
     }  

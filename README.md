@@ -4,23 +4,17 @@ Call to undefined relationship [department] on model [App\Models\User].
 ___________________________________________________________________________
   
 
-##The error is thrown here
-___________________________________________________________________________
+## Sample code on where error is thrown
 
-
- public function showRegistrationForm()
+public function showRegistrationForm()
     {
         $data = User::with('department')->get();
         return view('auth.register',['data'=>$data]);
-   ///////// Throwing all the error here
-
-        //array way ,['data'=>$data] == campact ('data')
-
-        
+    
    }
 
-    ### The user Model relationship
-
+ ## The user Model relationship
+'''
 
  class User extends Authenticatable
 {
@@ -47,8 +41,9 @@ ___________________________________________________________________________
         'email',
         'password',
     ];
+    '''
     
-             ###### sample relationship on department model
+ ## sample relationship on department model
 
 
 class department extends Model

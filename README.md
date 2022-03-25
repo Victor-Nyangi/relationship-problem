@@ -1,48 +1,67 @@
-         '''
-    I want to enable user select existing department upon registration to the Home page
+-----------------------------------------------------------------------------------------------------------------------------------------
+  ### Error
+Call to undefined relationship [department] on model [App\Models\User].
+___________________________________________________________________________
+  
 
-    The relationship between User model and department model does not pull the department id to be selected on registering the user
-         '''
+##The sample code thats throwing error
 
-## -- Sample code from register.blade.php
 
-                <div class="col-md-6">
-                    <select id="department_id" type="text" class="form-control @error('department_id') is-invalid @enderror" name="department_id" value="{{ old('department_id') }}" required autocomplete="department_id" autofocus>
-                        <option value="">--Select Department--</option>
-                        @foreach($department as $empdata) //Trying to use defined variable on department controller but i have  error** undefined variable**
-                        <option value="{{$empdata->id}}">{{$empdata->dpname}}</option>
-                        @endforeach
-                      
-                    </select>
-
-                @error('department_id')
-                <span class="invalid-feedback" role="alert">
-                    <strong>{{ $message }}</strong>
-                </span>
-                @enderror
-                </div>
-                </div>
-
-## -- Sample code user model
-
-public function departament()
+ public function showRegistrationForm()
     {
-        return $this->hasOne(departament::class, 'department_id');
+        $data = User::with('department')->get();
+        return view('auth.register',['data'=>$data]);
+   ///////// Throwing all the error here
+
+        //array way ,['data'=>$data] == campact ('data')
+
+        
+   }
+
+    ### The user Model relationship
+
+
+ class User extends Authenticatable
+{
+    use HasApiTokens, HasFactory, Notifiable;
+
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
+    public function departament()
+    {
+        return $this->belongsTo(department::class,'department_id');
     }
+     
+    protected $table = 'users';
+
+    protected $fillable = [
+        'department_id',
+        'name',
+        'last_name',
+        'gender',
+        'phone',
+        'email',
+        'password',
+    ];
+    
+             ###### sample relationship on department model
 
 
-## -- Sample code department model
+class department extends Model
+{
+    use HasFactory;
 
- public function User()
+    public function User()
     {
-        return $this->belongsTo(User::class);
+        return $this->hasMany(User::class);
     }  
 
+    protected $table = 'departments';
+    protected $fillable = ['dpname'];
+     
+   
+}
 
-    ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-
-    Try figure that problem
-
-
-    ################################################################################################################################################
